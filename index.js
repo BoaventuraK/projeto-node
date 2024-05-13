@@ -7,7 +7,7 @@ app.use(express.json())
 
 const users = []
 
-const buscarIndex=(id)=>{
+const buscarIndex = (id) => {
     return users.findIndex(user => user.id == id)
 }
 
@@ -23,14 +23,14 @@ app.post("/users", (req, res) => {
 
 app.put("/users/:id", (req, res) => {
     const index = buscarIndex(req.params.id)
-    users[index].userName=req.body.userName
-    users[index].age=req.body.age
+    users[index].userName = req.body.userName
+    users[index].age = req.body.age
     res.json(users[index])
 })
 
 app.delete("/users/:id", (req, res) => {
     const index = buscarIndex(req.params.id)
-    res.json({ mensagem: `${index}` })
+    res.json({ indexUser: `${index}` })
     users.splice(index, 1)
 })
 
